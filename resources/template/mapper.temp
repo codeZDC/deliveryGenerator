@@ -1,0 +1,34 @@
+package com.@companyName.@PACKIMPORT.mapper;
+
+import java.util.List;
+
+import com.@companyName.@PACKIMPORT.domain.@beanName;
+
+import tk.mybatis.mapper.common.Mapper;
+
+ /**
+ * @ClassName:@beanNameMapper
+ * @Description:@entityStrName数据层接口
+ * @author @authorName
+ * @CreateDate @dataTimeStr
+ */
+public interface I@beanNameMapper extends Mapper<@beanName> {
+	
+	/**
+	 * @title:find@beanNameList
+	 * @description: 查询@entityStrName列表
+	 * @author @authorName
+	 * @param @beanLower
+	 * @CreateDate  @dataTimeStr
+	 */
+	List<@beanName> find@beanNameList(@beanName @beanLower);
+	
+		/**
+	 * @title:updateSelectiveById
+	 * @description: 更新@entityStrName（更新不为null的值）
+	 * @author @authorName
+	 * @param @beanLower
+	 * @CreateDate  @dataTimeStr
+	 */
+    int update@beanNameSelectiveById(@beanName @beanLower);
+}

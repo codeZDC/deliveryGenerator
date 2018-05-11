@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.@companyName.@PACKIMPORT.mapper.I@beanNameMapper">
+  <resultMap id="@beanNameResultMap" type="com.@companyName.@PACKIMPORT.domain.@beanName">
+    @MapColumn
+  </resultMap>
+  <sql id="column_Where">
+  	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	@WhereColumn
+    </trim>
+  </sql>
+  <sql id="column_List">
+    @SelColumn
+  </sql>
+  
+  <!--
+  	功能：分页查询
+  -->
+  <select id="find@beanNameList" parameterType="com.@companyName.@PACKIMPORT.domain.@beanName" resultMap="@beanNameResultMap">
+    select	<include refid="column_List" />
+    from @entityTable
+    <include refid="column_Where" />
+    <if test="sortOrder !=null and sortOrder !='' and sortName != null and sortName != ''">
+    	order by 
+    	@OrderByColumn
+    </if>
+  </select>
+  
+  <!--只更新不为null的值-->
+  <update id="update@beanNameSelectiveById" parameterType="com.@companyName.@PACKIMPORT.domain.@beanName">
+    update @entityTable
+    <set>
+      @UPDATESETNOTNULL
+    </set>
+    where @UPDATEALLWHERE
+  </update>
+</mapper>
